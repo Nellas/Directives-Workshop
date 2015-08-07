@@ -5,19 +5,16 @@ var app = angular.module('directiveWorkshop').directive('pending', function() {
             request: "&"
 
         },
-        template:'<button ng-hide="loading"> Submit </button> <img style="margin-left: 25px;" src="images/ajax-loader.gif" ng-show="loading" />',
-        link: function(scope, elem, attrs) {
+        template:'<button ng-hide="loading"> Submit </button> <img style="margin-left: 25px;" src="static/images/ajax-loader.gif" ng-show="loading" />',
+        link: function(scope, elem) {
 
             elem.on('click', function () {
                 scope.loading = true;
                 scope.request()
-                    .then(function(data) {
-                        console.log(data);
-                        return data;
-                    }).then(function() {
+                    .then(function() {
                         scope.loading = false;
                     })
             });
         }
-    }
+    };
 });
